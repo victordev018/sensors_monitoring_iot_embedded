@@ -6,6 +6,7 @@
 
 // useful libraries
 #include "button.h"
+#include "sensor_pir.h"
 
 // struct to storing the state of devices
 typedef struct {
@@ -25,6 +26,10 @@ bool read_devices_callback() {
     state_devices->button_a = button_read();
     printf("state button: %s\n", state_devices->button_a == 0 ? "on" : "off");
 
+    // update state of sensor pir
+    state_devices->sensor_pir = sensor_pir_read();
+    printf("state sensor pir: %s\n", state_devices->sensor_pir == 0? "on" : "off");
+
     return true;    // keep reading
 }
 
@@ -42,6 +47,9 @@ void setup() {
 
     // starting button A
     button_init();
+
+    // starting sensor pir
+    sensor_pir_init();
 
     // creation of state devices with initial values
     state_devices = (StateDevices*) malloc(sizeof(StateDevices));

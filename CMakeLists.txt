@@ -61,6 +61,7 @@ target_link_libraries(button_IoT
 target_include_directories(button_IoT PRIVATE
     ${CMAKE_CURRENT_LIST_DIR}
     ${CMAKE_CURRENT_LIST_DIR}/src/utils/button
+    ${CMAKE_CURRENT_LIST_DIR}/src/utils/sensor_pir
 )
 
 # Add any user requested libraries
