@@ -37,11 +37,14 @@ pico_sdk_init()
 file(GLOB_RECURSE MAIN "src/button_IoT.c")
 # set path to utility files
 file(GLOB_RECURSE UTILS "src/utils/*/*.c")
+# set path to drivers
+file(GLOB_RECURSE DRIVERS "src/drivers/*.c")
 
 # Add executable. Default name is the project name, version 0.1
 add_executable(button_IoT 
     ${MAIN}
     ${UTILS}
+    ${DRIVERS}
 )
 
 pico_set_program_name(button_IoT "button_IoT")
@@ -55,13 +58,16 @@ pico_enable_stdio_usb(button_IoT 1)
 target_link_libraries(button_IoT
     pico_stdlib
     hardware_timer
+    hardware_i2c
 )
 
 # Add the standard include files to the build
 target_include_directories(button_IoT PRIVATE
     ${CMAKE_CURRENT_LIST_DIR}
+    ${CMAKE_CURRENT_LIST_DIR}/src/drivers
     ${CMAKE_CURRENT_LIST_DIR}/src/utils/button
     ${CMAKE_CURRENT_LIST_DIR}/src/utils/sensor_pir
+    ${CMAKE_CURRENT_LIST_DIR}/src/utils/display
 )
 
 # Add any user requested libraries
