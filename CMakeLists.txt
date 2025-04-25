@@ -54,6 +54,7 @@ pico_enable_stdio_usb(button_IoT 1)
 # Add the standard library to the build
 target_link_libraries(button_IoT
     pico_stdlib
+    hardware_timer
 )
 
 # Add the standard include files to the build

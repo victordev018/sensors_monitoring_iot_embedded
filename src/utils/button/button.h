@@ -6,5 +6,6 @@
 
 // definition of functions
 void button_init();
+int button_read();
 
 #endif
