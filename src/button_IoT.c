@@ -7,6 +7,7 @@
 #include "button.h"
 #include "hcsr04.h"
 #include "display.h"
+#include "wifi.h"
 
 // struct to storing the state of devices
 typedef struct {
@@ -54,9 +55,6 @@ void setup() {
     // starting sensor of distance
     hcsr04_init();
 
-    // starting sensor pir
-    sensor_pir_init();
-
     // creation of state devices with initial values
     state_devices = (StateDevices*) malloc(sizeof(StateDevices));
     state_devices->button_a = 0;
@@ -68,6 +66,9 @@ int main()
 
     // initializing devices
     setup();
+    sleep_ms(1500);
+    // trying to connect to wifi a network
+    wifi_connect();
 
     while (true) {
 

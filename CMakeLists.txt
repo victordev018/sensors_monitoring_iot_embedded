@@ -59,6 +59,7 @@ target_link_libraries(button_IoT
     pico_stdlib
     hardware_timer
     hardware_i2c
+    pico_cyw43_arch_lwip_threadsafe_background
 )
 
 # Add the standard include files to the build
@@ -68,6 +69,7 @@ target_include_directories(button_IoT PRIVATE
     ${CMAKE_CURRENT_LIST_DIR}/src/utils/button
     ${CMAKE_CURRENT_LIST_DIR}/src/utils/display
     ${CMAKE_CURRENT_LIST_DIR}/src/utils/sensor_hcsr04
+    ${CMAKE_CURRENT_LIST_DIR}/src/utils/wifi
 )
 
 # Add any user requested libraries
