@@ -70,6 +70,7 @@ target_include_directories(button_IoT PRIVATE
     ${CMAKE_CURRENT_LIST_DIR}/src/utils/display
     ${CMAKE_CURRENT_LIST_DIR}/src/utils/sensor_hcsr04
     ${CMAKE_CURRENT_LIST_DIR}/src/utils/wifi
+    ${CMAKE_CURRENT_LIST_DIR}/src/utils/server
 )
 
 # Add any user requested libraries

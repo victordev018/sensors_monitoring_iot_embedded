@@ -43,6 +43,7 @@
         "scminput": false
     },
     "files.associations": {
-        "hcsr04.h": "c"
+        "hcsr04.h": "c",
+        "string.h": "c"
     }
 }

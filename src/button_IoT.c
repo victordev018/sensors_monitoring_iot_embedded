@@ -8,6 +8,7 @@
 #include "hcsr04.h"
 #include "display.h"
 #include "wifi.h"
+#include "server.h"
 
 // struct to storing the state of devices
 typedef struct {
@@ -69,6 +70,7 @@ int main()
     sleep_ms(1500);
     // trying to connect to wifi a network
     wifi_connect();
+    server_create_tcp_connection();
 
     while (true) {
 
@@ -81,7 +83,10 @@ int main()
         // show state on display
         update_device_status_on_display(state_devices->button_a, state_devices->sensor_distance);
 
-        // wait on second
+        // send data to server
+        server_send_data_to_server(state_devices->button_a, state_devices->sensor_distance);
+
+        // wait one second
         sleep_ms(1000);
     }
 }
