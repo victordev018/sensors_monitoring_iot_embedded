@@ -14,6 +14,6 @@ void server_create_tcp_connection();
 void server_close_tcp_connection();
 void server_tcp_client_error(void *arg, err_t err);
 err_t server_tcp_client_recv(void *arg, struct tcp_pcb *tpcb, struct pbuf *p, err_t err);
-void server_send_data_to_server(int button_state, float distance);
+void server_send_data_to_server(int button_state, float distance, int axis_x, int axis_y, char *direction);
 
 #endif

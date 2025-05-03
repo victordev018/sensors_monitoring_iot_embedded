@@ -36,7 +36,7 @@ pico_sdk_init()
 # set main code path
 file(GLOB_RECURSE MAIN "src/button_IoT.c")
 # set path to utility files
-file(GLOB_RECURSE UTILS "src/utils/*/*.c")
+file(GLOB_RECURSE UTILS "src/utils/**/*.c")
 # set path to drivers
 file(GLOB_RECURSE DRIVERS "src/drivers/*.c")
 
@@ -59,6 +59,7 @@ target_link_libraries(button_IoT
     pico_stdlib
     hardware_timer
     hardware_i2c
+    hardware_adc
     pico_cyw43_arch_lwip_threadsafe_background
 )
 
@@ -71,6 +72,7 @@ target_include_directories(button_IoT PRIVATE
     ${CMAKE_CURRENT_LIST_DIR}/src/utils/sensor_hcsr04
     ${CMAKE_CURRENT_LIST_DIR}/src/utils/wifi
     ${CMAKE_CURRENT_LIST_DIR}/src/utils/server
+    ${CMAKE_CURRENT_LIST_DIR}/src/utils/joystick
 )
 
 # Add any user requested libraries

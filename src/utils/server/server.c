@@ -84,7 +84,7 @@ void server_create_tcp_connection() {
 }
 
 // Sending data to the server
-void server_send_data_to_server(int button_state, float distance) {
+void server_send_data_to_server(int button_state, float distance, int axis_x, int axis_y, char *direction) {
     while (pcb == NULL || !have_connection) {
         if (retries >= MAX_RETRIES) {
             printf("Error: Connection could not be re-established after %d attempts.\n", MAX_RETRIES);
@@ -104,8 +104,11 @@ void server_send_data_to_server(int button_state, float distance) {
     snprintf(request_body, sizeof(request_body),
     "{\n"
     "\"buttonState\" : \"%d\",\n"
-    "\"distanceValue\" : \"%.2f\"\n"
-    "}", button_state, distance);
+    "\"distanceValue\" : \"%.2f\",\n"
+    "\"axisX\" : \"%d\",\n"
+    "\"axisY\" : \"%d\",\n"
+    "\"direction\" : \"%s\"\n"
+    "}", button_state, distance, axis_x, axis_y, direction);
 
     // preparing the request
     char request[256];
